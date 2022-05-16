@@ -1,5 +1,5 @@
 class Gear < ApplicationRecord
   has_one :user
 
-  validates :title, :description, :price, :address, presence: true
+  validates :title, :description, :price, presence: true
 end
