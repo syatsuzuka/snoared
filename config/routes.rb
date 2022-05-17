@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'gears/index'
-  get 'gears/show'
+  get 'bookings/', to: 'bookings#index'
+  get 'bookings/update'
+  get 'bookings/create'
+  get 'gears/', to: 'gears#index'
+  get 'gears/:id', to: 'gears#show'
   get 'gears/new'
   get 'gears/create'
   devise_for :users
