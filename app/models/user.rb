@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
          has_many :gears,dependent: :destroy
          has_many :bookings
-         has_many :gears, through: :bookings
+         has_many :bookings_as_owner, through: :gears, source: :bookings
 end
