@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.gear = @gear
     @booking.user = current_user
+    @booking.status = "occupied"
     authorize @booking
 
     if @booking.save
