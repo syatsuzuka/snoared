@@ -1,29 +1,30 @@
-.card-index {
+.cards-index {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 8px;
 }
 
-.card-index > img {
+.cards-index > img {
   height: 200px;
-  width: 200px;
+  width: 100%;
   object-fit: cover;
 }
 
-.card-index h2 {
+.cards-index h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-index p {
+.cards-index p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-index .card-index-infos {
+.cards-index .cards-index-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -31,7 +32,7 @@
   position: relative;
 }
 
-.card-index-infos .card-index-user {
+.cards-index-infos .cards-index-user {
   position: absolute;
   right: 16px;
   top: -20px;
@@ -41,7 +42,7 @@
 
 // ↓↓↓↓↓↓↓ card layout ↓↓↓↓↓↓↓
 
-.cards-index {
+.cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
