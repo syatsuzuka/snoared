@@ -9,12 +9,9 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2022_05_17_055135) do
-
+ActiveRecord::Schema.define(version: 2022_05_17_085616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
   create_table "bookings", force: :cascade do |t|
     t.bigint "gear_id", null: false
     t.bigint "user_id", null: false
@@ -26,19 +23,17 @@ ActiveRecord::Schema.define(version: 2022_05_17_055135) do
     t.index ["gear_id"], name: "index_bookings_on_gear_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
-
   create_table "gears", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.decimal "price"
-    t.bigint "users_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
     t.string "img_url"
-    t.index ["users_id"], name: "index_gears_on_users_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_gears_on_user_id"
   end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_055135) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
   add_foreign_key "bookings", "gears"
   add_foreign_key "bookings", "users"
+  add_foreign_key "gears", "users"
 end
