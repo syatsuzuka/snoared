@@ -1,5 +1,5 @@
 class Gear < ApplicationRecord
-  has_one :user
+  belongs_to :user
   has_many :users, through: :bookings
 
   validates :title, :description, :price, :address, presence: true
