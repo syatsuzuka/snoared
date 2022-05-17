@@ -6,7 +6,7 @@
 
 .card-index > img {
   height: 200px;
-  width: 100%;
+  width: 200px;
   object-fit: cover;
 }
 
@@ -16,14 +16,14 @@
   margin: 0;
 }
 
-.card-trip p {
+.card-index p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-trip .card-trip-infos {
+.card-index .card-index-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,7 @@
   position: relative;
 }
 
-.card-trip-infos .card-trip-user {
+.card-index-infos .card-index-user {
   position: absolute;
   right: 16px;
   top: -20px;
