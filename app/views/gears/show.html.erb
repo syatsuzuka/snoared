@@ -1,4 +1,17 @@
-<h1>Gears#show</h1>
-<p>Find me in app/views/gears/show.html.erb</p>
 
-<%= @gear.title %>
+<div class="container">
+  <div class="card">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" alt="">
+    <%# <%= image_tag @gear.poster_url, alt: "gear", width: 200 %> %>
+    <div class="card-info">
+      <h1><%= @gear.title %></h1>
+      <p><%= @gear.description %></p>
+      <p><%= @gear.address %></p>
+      <p><%= @gear.price %></p>
+    </div>
+  </div>
+
+  <%# <div class="form">
+    <%= render 'gears/form' %>
+  <%# </div> %>
+</div>
