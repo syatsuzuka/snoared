@@ -10,5 +10,10 @@
 }
 
 .form {
-  border: 1px solid black;
+  height: auto;
+  padding: 16px 24px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
 }
