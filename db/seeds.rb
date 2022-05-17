@@ -27,7 +27,10 @@ Gear.create(title: "Roxy Breeze Snowboard ​+ Flow Mayon Snowboard Bindings - W
 puts "... #{Gear.count} gear listed."
 
 puts "Creating bookings...."
-6.times do
-  Booking.create!(name: )
-end
+Booking.create(start_date: "May 19 2022", end_date: "May 22 2022", status: "Accepted")
+Booking.create(start_date: "May 23 2022", end_date: "May 26 2022", status: "Accepted")
+Booking.create(start_date: "May 27 2022", end_date: "May 30 2022", status: "Under Consideration")
+Booking.create(start_date: "May 31 2022", end_date: "June 2 2022", status: "Accepted")
+Booking.create(start_date: "June 6 2022", end_date: "June 9 2022", status: "Under Consideration")
+Booking.create(start_date: "June 10 2022", end_date: "June 14 2022", status: "Under Consideration")
 puts "... #{Booking.count} bookings."
