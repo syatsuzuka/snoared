@@ -32,4 +32,8 @@ class GearPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def owned?
+    true
+  end
 end
