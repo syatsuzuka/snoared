@@ -25,9 +25,14 @@ class GearsController < ApplicationController
     if @gear.save
       redirect_to gears_path
     else
-      raise
       render :new
     end
+  end
+
+  def owned
+    @gears = policy_scope(Gear)
+    authorize @gears
+    render 'owned'
   end
 
   private
