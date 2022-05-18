@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_gear, only: %i[new create]
 
   def index
-    @bookings = policy_scope(Booking)
+    @bookings = policy_scope(Booking).sort_by { |booking| booking.start_date }.reverse
   end
 
   def update
@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.gear = @gear
     @booking.user = current_user
-    @booking.status = "occupied"
+    @booking.status = "Requested"
     authorize @booking
 
     if @booking.save
@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
   def all
     @bookings = policy_scope(Booking)
     authorize @bookings
+    @bookings.sort_by { |booking| booking.start_date }.reverse
   end
 
   private

@@ -48,12 +48,32 @@ gear7 = Gear.create!(title: "Roxy Breeze Snowboard ​+ Flow Mayon Snowboard Bin
 puts "... #{Gear.count} gear listed."
 
 puts "Creating bookings...."
-Booking.create!(start_date: Date.new(2022, 05, 19), end_date: Date.new(2022, 05, 23), status: "Accepted", gear: gear, user: user)
-Booking.create!(start_date: Date.new(2022, 05, 27), end_date: Date.new(2022, 05, 30), status: "Accepted", gear: gear2, user: user2)
-Booking.create!(start_date: Date.new(2022, 05, 31), end_date: Date.new(2022, 06, 03), status: "Under Consideration", gear: gear3, user: user2)
-Booking.create!(start_date: Date.new(2022, 06, 05), end_date: Date.new(2022, 06, 11), status: "Accepted", gear: gear4, user: user)
-Booking.create!(start_date: Date.new(2022, 05, 31), end_date: Date.new(2022, 06, 03), status: "Under Consideration", gear: gear1, user: user2)
-Booking.create!(start_date: Date.new(2022, 06, 05), end_date: Date.new(2022, 06, 11), status: "Accepted", gear: gear6, user: user)
-Booking.create!(start_date: Date.new(2022, 06, 13), end_date: Date.new(2022, 06, 15), status: "Under Consideration", gear: gear5, user: user4)
-Booking.create!(start_date: Date.new(2022, 06, 17), end_date: Date.new(2022, 06, 22), status: "Under Consideration", gear: gear7, user: user4)
+puts "for James"
+Booking.create!(start_date: Date.new(2022, 4, 1), end_date: Date.new(2022, 4, 30), status: "Expired", gear: gear, user: user)
+Booking.create!(start_date: Date.new(2022, 5, 1), end_date: Date.new(2022, 5, 31), status: "In Use", gear: gear2, user: user)
+Booking.create!(start_date: Date.new(2022, 6, 1), end_date: Date.new(2022, 6, 30), status: "Accepted", gear: gear3, user: user)
+Booking.create!(start_date: Date.new(2022, 7, 1), end_date: Date.new(2022, 7, 31), status: "Requested", gear: gear4, user: user)
+Booking.create!(start_date: Date.new(2022, 8, 1), end_date: Date.new(2022, 8, 31), status: "Canceled", gear: gear5, user: user)
+
+puts "for Shunjiro"
+Booking.create!(start_date: Date.new(2022, 4, 1), end_date: Date.new(2022, 4, 30), status: "Expired", gear: gear2, user: user2)
+Booking.create!(start_date: Date.new(2022, 5, 1), end_date: Date.new(2022, 5, 31), status: "In Use", gear: gear3, user: user2)
+Booking.create!(start_date: Date.new(2022, 6, 1), end_date: Date.new(2022, 6, 30), status: "Accepted", gear: gear4, user: user2)
+Booking.create!(start_date: Date.new(2022, 7, 1), end_date: Date.new(2022, 7, 31), status: "Requested", gear: gear5, user: user2)
+Booking.create!(start_date: Date.new(2022, 8, 1), end_date: Date.new(2022, 8, 31), status: "Canceled", gear: gear6, user: user2)
+
+puts "for Shingo"
+Booking.create!(start_date: Date.new(2022, 4, 1), end_date: Date.new(2022, 4, 30), status: "Expired", gear: gear3, user: user3)
+Booking.create!(start_date: Date.new(2022, 5, 1), end_date: Date.new(2022, 5, 31), status: "In Use", gear: gear4, user: user3)
+Booking.create!(start_date: Date.new(2022, 6, 1), end_date: Date.new(2022, 6, 30), status: "Accepted", gear: gear5, user: user3)
+Booking.create!(start_date: Date.new(2022, 7, 1), end_date: Date.new(2022, 7, 31), status: "Requested", gear: gear6, user: user3)
+Booking.create!(start_date: Date.new(2022, 8, 1), end_date: Date.new(2022, 8, 31), status: "Canceled", gear: gear7, user: user3)
+
+puts "for Ed"
+Booking.create!(start_date: Date.new(2022, 4, 1), end_date: Date.new(2022, 4, 30), status: "Expired", gear: gear4, user: user4)
+Booking.create!(start_date: Date.new(2022, 5, 1), end_date: Date.new(2022, 5, 31), status: "In Use", gear: gear5, user: user4)
+Booking.create!(start_date: Date.new(2022, 6, 1), end_date: Date.new(2022, 6, 30), status: "Accepted", gear: gear6, user: user4)
+Booking.create!(start_date: Date.new(2022, 7, 1), end_date: Date.new(2022, 7, 31), status: "Requested", gear: gear7, user: user4)
+Booking.create!(start_date: Date.new(2022, 8, 1), end_date: Date.new(2022, 8, 31), status: "Canceled", gear: gear, user: user4)
+
 puts "... #{Booking.count} bookings."
