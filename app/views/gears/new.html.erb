@@ -1,2 +1,14 @@
-<h1>Gears#new</h1>
-<p>Find me in app/views/gears/new.html.erb</p>
+<div class="container">
+  <h1>Gears#new</h1>
+  <p>Find me in app/views/gears/new.html.erb</p>
+
+  <%= simple_form_for @gear do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :img_url %>
+    <%= f.input :address %>
+    <%= f.input :price %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= link_to 'Cancel', gears_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
