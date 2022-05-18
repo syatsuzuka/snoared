@@ -1,11 +1,18 @@
 class BookingsController < ApplicationController
-  before_action :set_gear, only: %i[create]
+  before_action :set_gear, only: %i[new create]
 
   def index
     @bookings = policy_scope(Booking)
   end
 
   def update
+  end
+
+  def new
+    @booking = Booking.new
+    @gear.user = current_user
+    @booking.gear = @gear
+    authorize @booking
   end
 
   def create
@@ -18,7 +25,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      redirect_to gear_path(@booking.gear)
+      render :new
     end
   end
 
