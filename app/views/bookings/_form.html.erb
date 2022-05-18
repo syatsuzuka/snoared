@@ -1,5 +1,5 @@
 <%= simple_form_for [@gear, @booking] do |f| %>
-  <%= f.input :start_date, html5: true, data:{calculation_target:"startDay"} %>
-  <%= f.input :end_date, html5: true, data:{calculation_target:"endDay"} %>
-  <%= f.submit class:'btn btn-danger btn-lg text-light mb-3 mt-3 active'%>
+  <%= f.input :start_date, html5: true, input_html: { data: {calculation_target:"startDay", action: "change->calculation#calculate"} } %>
+  <%= f.input :end_date, html5: true, input_html: { data: {calculation_target:"endDay", action: "change->calculation#calculate"} } %>
+  <p class="text-center"><%= f.submit class:'btn btn-danger btn-lg text-light mb-3 mt-3 active'%></p>
 <% end %>
