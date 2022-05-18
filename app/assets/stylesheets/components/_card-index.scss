@@ -2,25 +2,32 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 8px;
+  padding: 36px;
+  max-width: 360px
 }
 
 .cards-index > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 16px;
 }
 
 .cards-index h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  padding-bottom: 16px;
 }
 
 .cards-index p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  padding-bottom:16px;
+}
+.cards-index .price{
+
 }
 
 
@@ -46,39 +53,40 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+
 }
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .cards-index {
+  .cards{
     grid-template-columns: 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .cards-index {
+  .cards {
     grid-template-columns: 1fr;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .cards-index {
+  .cards {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .cards-index {
+  .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .cards-index {
+  .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
