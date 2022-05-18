@@ -1,6 +1,5 @@
 <div class="container">
-  <h1>Gears#new</h1>
-  <p>Find me in app/views/gears/new.html.erb</p>
+  <h1>Add a new Gear</h1>
 
   <%= simple_form_for @gear do |f| %>
     <%= f.input :title %>
@@ -8,7 +7,7 @@
     <%= f.input :img_url %>
     <%= f.input :address %>
     <%= f.input :price %>
-    <%= f.submit 'Save', class: "btn btn-primary" %>
-    <%= link_to 'Cancel', gears_path, class: 'btn btn-primary' %>
+    <%= f.submit 'Save', class: "btn btn-danger text-light" %>
+    <%= link_to 'Cancel', gears_path, class: 'btn btn-danger text-light' %>
   <% end %>
 </div>
