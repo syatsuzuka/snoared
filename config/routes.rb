@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create ]
   end
   resources :bookings, only: [ :index, :update ]
+
+  get '/admin/bookings/', to: 'bookings#all', as: :admin_bookings
 end

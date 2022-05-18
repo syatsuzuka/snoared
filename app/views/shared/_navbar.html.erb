@@ -12,8 +12,14 @@
       <% if user_signed_in? %>
         <nav class="my-2 my-md-0 mr-md-3">
           <%= link_to "Home", gears_path, class: "p-2 text-dark" %>
-          <%= link_to "My Booking", bookings_path, class: "p-2 text-dark" %>
-          <%= link_to "Add Gear", new_gear_path, class: "p-2 text-dark" %>
+          <% if current_user.roles.where(name: "admin").any? %>
+            <%= link_to "All Booking", admin_bookings_path, class: "p-2 text-dark" %>
+          <% else %>
+            <%= link_to "My Booking", bookings_path, class: "p-2 text-dark" %>
+          <% end %>
+          <% if current_user.roles.where(name: "owner").any? %>
+            <%= link_to "Add Gear", new_gear_path, class: "p-2 text-dark" %>
+          <% end %>
         </nav>
 
         <ul class="navbar-nav me-auto">

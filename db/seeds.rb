@@ -9,7 +9,13 @@ require "date"
 puts "Cleaning the db...."
 Booking.destroy_all
 Gear.destroy_all
+Assignment.destroy_all
 User.destroy_all
+Role.destroy_all
+
+puts "Creating role..."
+role1 = Role.create!(name: 'owner')
+role2 = Role.create!(name: 'admin')
 
 puts "Creating user..."
 user = User.create!(first_name: "James", last_name: "Reed", email: "james@mail.com", password: "123123")
@@ -17,6 +23,18 @@ user2 = User.create!(first_name: "Shunjiro", last_name: "Yatsuzuka", email: "shu
 user3 = User.create!(first_name: "Shingo", last_name: "Kubomura", email: "shingo@mail.com", password: "123123")
 user4 = User.create!(first_name: "Edmund", last_name: "Oh", email: "edmund@mail.com", password: "123123")
 puts "... #{User.count} Users."
+customer = User.create!(first_name: "Customer", last_name: "A", email: "customer@mail.com", password: "123123")
+owner = User.create!(first_name: "Owner", last_name: "B", email: "owner@mail.com", password: "123123")
+admin = User.create!(first_name: "Admin", last_name: "C", email: "admin@mail.com", password: "123123")
+puts "... #{User.count} Users."
+
+puts "Creating assignment..."
+Assignment.create!(user: user, role: role1)
+Assignment.create!(user: user2, role: role1)
+Assignment.create!(user: user3, role: role1)
+Assignment.create!(user: user4, role: role1)
+Assignment.create!(user: owner, role: role1)
+Assignment.create!(user: admin, role: role2)
 
 puts "Creating gear..."
 gear = Gear.create!(title: "Roxy Poppy Package Snowboard - Girls' 2022", description: "The Roxy Poppy Snowboard Package is the best way to get your little snowboarder out on the hill making her first turns. With an easy rockered shape and a gentle flex, the Poppy likes to make smooth turns, and is resistant to catching an edge. The smaller sized Poppys come mounted with Poppy Speed Strap Bindings, perfect for the tiniest feet, while the bigger ones come mounted with the Poppy Traditional Binding, which is just like a grownup binding, but smaller.", img_url: 'https://images.evo.com/imgp/700/181713/738562/clone.jpg', price: 2490.0, address: "Ogawa, Kamiminochi District, Nagano", user: user)

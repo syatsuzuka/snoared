@@ -29,6 +29,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def all
+    @bookings = policy_scope(Booking)
+    authorize @bookings
+  end
+
   private
 
   def booking_params
