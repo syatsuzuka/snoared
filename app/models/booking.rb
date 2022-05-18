@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
   belongs_to :user
 
   def check_status
-    unless ["Available", "Requested", "Accepted", "In Use", "Expired", "Canceled"].include?(status)
+    unless ["Available", "Requested", "Accepted", "Canceled"].include?(status)
       errors.add(:status, "Unsupposed status was allocated: #{status}")
     end
   end
