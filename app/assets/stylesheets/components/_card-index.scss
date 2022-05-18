@@ -3,10 +3,19 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 36px;
-  max-width: 360px
+  max-width: 360px;
+  text-decoration:none;
+  color:black;
+}
+.cards-index:hover{
+  transform: scale(1.02);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+opacity: 0.8;
+text-decoration:none;
+color:black;
 }
 
-.cards-index > img {
+.cards-index > a img{
   height: 200px;
   width: 100%;
   object-fit: cover;
