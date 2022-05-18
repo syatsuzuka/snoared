@@ -24,9 +24,15 @@ export default class extends Controller {
   const startday = new Date(this.startDayTarget.value)
   const endday = new Date(this.endDayTarget.value)
   const days = (endday - startday) / (1000 * 3600 * 24) + 1
+  if(isNaN(days)){
+  total = 0;
+}
   this.daysTarget.innerText = days
   const price = parseInt(this.priceTarget.innerText)
   const total = days * price
+  if(isNaN(total)){
+  total = 0;
+}
   this.totalTarget.innerText = total
 
 }
