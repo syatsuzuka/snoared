@@ -7,7 +7,7 @@
         <h1><%= @gear.title %></h1>
         <p class="mt-5"><%= @gear.description %></p>
         <h4 class="blockquote-footer mt-5"><%= @gear.address %></h4>
-        <h2 class="mt-5">￥<%= @gear.price %>/day</h2>
+        <h2 class="mt-5">￥<%= @gear.price.to_i %>/day</h2>
       </div>
     </div>
     <div class="form">
@@ -15,9 +15,9 @@
       <%= render 'bookings/form'%>
       <hr>
       <div class="price text-end">
-        <p>￥<%= @gear.price %> x <span data-calculation-target="days">1</span> day</p>
+        <p>￥<%= @gear.price.to_i %> x <span data-calculation-target="days">1</span> day</p>
         <hr>
-        <h2>Total ￥<span data-calculation-target="total"><%= @gear.price %></span></h2>
+        <h2>Total ￥<span data-calculation-target="total"><%= @gear.price.to_i %></span></h2>
       </div>
     </div>
   </div>
