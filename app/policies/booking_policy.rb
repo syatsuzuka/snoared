@@ -1,7 +1,11 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(user: user)
+      if user.roles.where(name: "admin").any?
+        scope.all
+      else
+        scope.where(user: user)
+      end
     end
   end
 
@@ -31,5 +35,9 @@ class BookingPolicy < ApplicationPolicy
 
   def destroy?
     true
+  end
+
+  def all?
+    user.roles.where(name: "admin").any?
   end
 end
