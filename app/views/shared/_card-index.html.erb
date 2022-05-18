@@ -2,7 +2,7 @@
   <% @gears.each do |gear| %>
 
     <div class="cards-index d-flex flex-column">
-    <%= link_to gear_path(gear.id) do %>
+    <%= link_to new_gear_booking_path(gear.id) do %>
       <img src=<%=gear.img_url%>  />
     <% end %>
         <h2><%= gear.title %></h2>
