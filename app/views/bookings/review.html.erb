@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Review Bookings</h1>
+  <table class="table m-5">
+    <tr>
+      <th class="col">Gear</th>
+      <th class="col">Customer Name</th>
+      <th class="col">Start Date</th>
+      <th class="col">End Date</th>
+      <th class="col">Status</th>
+    </tr>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td class="col"><%= booking.gear.title %></td>
+        <td class="col"><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+        <td class="col"><%= booking.start_date %></td>
+        <td class="col"><%= booking.end_date %></td>
+        <td class="col"><%= booking.status %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

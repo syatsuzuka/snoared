@@ -55,7 +55,8 @@ class BookingsController < ApplicationController
   end
 
   def review
-    authorize @booking
+    @bookings = Booking.where(gear: @gear)
+    authorize @bookings
   end
 
   private

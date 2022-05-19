@@ -44,4 +44,8 @@ class BookingPolicy < ApplicationPolicy
   def cancel?
     true
   end
+
+  def review?
+    true
+  end
 end
