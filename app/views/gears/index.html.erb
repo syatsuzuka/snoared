@@ -1,4 +1,12 @@
 
 <div class="container-fluid col-10">
+  <%= form_tag gears_path, method: :get, class: 'd-flex my-5' do %>
+    <%= text_field_tag :q,
+      params[:q],
+      class: "form-control",
+      placeholder: "Find a gear"
+    %>
+    <%= submit_tag "Search", class: "btn btn-danger text-white ms-3" %>
+  <% end %>
 <%= render 'shared/card-index'%>
 </div>

@@ -3,7 +3,12 @@ class GearsController < ApplicationController
   before_action :set_gear, only: %w[show]
 
   def index
-    @gears = policy_scope(Gear)
+     @gears =
+      if params[:q].present?
+        policy_scope(Gear).search_by_title_and_description_address(params[:q])
+      else
+        policy_scope(Gear)
+      end
   end
 
   def show
