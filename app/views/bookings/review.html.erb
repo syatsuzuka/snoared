@@ -15,11 +15,13 @@
         <td class="col"><%= booking.start_date %></td>
         <td class="col"><%= booking.end_date %></td>
         <td class="col">
-          <% if booking.status == 'Requested' %>
-            <%= link_to booking.status, accept_gear_booking_path(booking.gear, booking), class: 'btn btn-danger text-white',data: { confirm: 'Do you want to accept this?' } %>
-          <% else %>
-            <%= booking.status %>
-          <% end %>
+          <div><%= booking.status %></div>
+          <div>
+            <% if booking.status == 'Requested' %>
+              <%= link_to 'Accept', accept_gear_booking_path(booking.gear, booking), class: 'btn btn-danger text-white',data: { confirm: 'Do you want to accept this?' } %>
+              <%= link_to 'Reject', reject_gear_booking_path(booking.gear, booking), class: 'btn btn-danger text-white',data: { confirm: 'Do you want to reject this?' } %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

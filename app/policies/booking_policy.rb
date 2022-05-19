@@ -44,6 +44,10 @@ class BookingPolicy < ApplicationPolicy
   def accept?
     true
   end
+#  and ( booking.start_date > Date.today
+  def reject?
+    true
+  end
 
   def cancel?
     true
