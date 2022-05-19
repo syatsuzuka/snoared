@@ -33,6 +33,10 @@ class GearPolicy < ApplicationPolicy
     true
   end
 
+  def admin?
+    true
+  end
+
   def owner?
     true
   end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/bookings/admin', to: 'bookings#admin', as: :admin_bookings
+  get '/gears/admin', to: 'gears#admin', as: :admin_gears
   get '/gears/owner', to: 'gears#owner', as: :owner_gears
   get '/gears/:gear_id/bookings/review', to: 'bookings#review', as: :review_gear_bookings
   get '/gears/:gear_id/bookings/:id/cancel', to: 'bookings#cancel', as: :cancel_gear_booking
