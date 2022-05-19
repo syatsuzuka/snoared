@@ -4,6 +4,15 @@ class GearsController < ApplicationController
 
   def index
     @gears = policy_scope(Gear)
+    @markers = @gears.geocoded.map do |gear|
+      {
+        lat: gear.latitude,
+        lng: gear.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
+        # image_url: helpers.asset_url("SNOARED-logo")
+
+      }
+    end
   end
 
   def show
