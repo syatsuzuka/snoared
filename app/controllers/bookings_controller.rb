@@ -1,11 +1,9 @@
 class BookingsController < ApplicationController
-  before_action :set_gear, only: %i[new create]
+  before_action :set_gear, only: %i[new create cancel update]
+  before_action :set_booking, only: %i[cancel update]
 
   def index
     @bookings = policy_scope(Booking).sort_by { |booking| booking.start_date }.reverse
-  end
-
-  def update
   end
 
   def new
@@ -35,6 +33,21 @@ class BookingsController < ApplicationController
     @bookings.sort_by { |booking| booking.start_date }.reverse
   end
 
+  def cancel
+    authorize @booking
+  end
+
+  def update
+    @booking.status = "Canceled"
+    authorize @booking
+
+    if @booking.save!
+      redirect_to bookings_path
+    else
+      render :cancel
+    end
+  end
+
   private
 
   def booking_params
@@ -43,5 +56,9 @@ class BookingsController < ApplicationController
 
   def set_gear
     @gear = Gear.find(params[:gear_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

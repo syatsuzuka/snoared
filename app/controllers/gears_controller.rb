@@ -3,8 +3,15 @@ class GearsController < ApplicationController
   before_action :set_gear, only: %w[show]
 
   def index
-    @gears = policy_scope(Gear)
-    @markers = @gears.geocoded.map do |gear|
+  
+     @gears =
+      if params[:q].present?
+        policy_scope(Gear).search_by_title_and_description_address(params[:q])
+      else
+        policy_scope(Gear)
+      end
+
+     @markers = @gears.geocoded.map do |gear|
       {
         lat: gear.latitude,
         lng: gear.longitude,
