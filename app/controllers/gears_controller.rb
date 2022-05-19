@@ -30,7 +30,7 @@ class GearsController < ApplicationController
   end
 
   def owned
-    @gears = policy_scope(Gear)
+    @gears = policy_scope(Gear).where(user: current_user)
     authorize @gears
     render 'owned'
   end
