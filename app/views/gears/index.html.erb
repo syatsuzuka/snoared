@@ -1,11 +1,17 @@
-
- <%= form_tag gears_path, method: :get, class: 'd-flex my-5' do %>
+<div class="container-fluid col-10">
+  <%= form_tag gears_path, method: :get, class: 'd-flex align-items-center my-5' do %>
     <%= text_field_tag :q,
       params[:q],
-      class: "form-control",
+      class: "form-control searchbar",
       placeholder: "Find a gear"
     %>
-    <%= submit_tag "Search", class: "btn btn-danger text-white ms-3" %>
+    <p class="m-0 mx-3">below</p>
+    <%= text_field_tag :price,
+          params[:price],
+          class: "form-control searchbar",
+          placeholder: "¥"
+    %>
+    <%= submit_tag "Search", class: "searchbox" %>
   <% end %>
 <div class="container-fluid col-11 d-flex flex-direction-column justify-content-be">
 
