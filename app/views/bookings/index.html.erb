@@ -14,8 +14,7 @@
                 </p>
                 <p class="p-2">Status:
                   <span class="text-white bg-secondary p-1"><%= booking.status %></span>
-                  <% if booking.status == "Canceled" or ( booking.start_date <= Date.today ) %>
-                  <% else %>
+                  <% if ["Requested", "Accepted"].include? (booking.status) and booking.start_date > Date.today %>
                     <%= link_to "Cancel", cancel_gear_booking_path(booking.gear, booking), class: "btn btn-danger text-white" %>
                   <% end %>
                 </p>
