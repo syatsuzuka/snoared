@@ -25,10 +25,17 @@
 
         <ul class="navbar-nav me-auto">
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if defined? current_user.account.photo.key %>
+              <%= cl_image_tag current_user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% else %>
+              <%= cl_image_tag 'up5f4z685k7ra6544pjykvylaj3k', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <% if current_user.account.nil? %>
+                <%= link_to "Setting", new_account_path, class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "Setting", edit_account_path(current_user.account), class: "dropdown-item" %>
+              <% end %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
