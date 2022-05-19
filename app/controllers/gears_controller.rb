@@ -53,11 +53,9 @@ class GearsController < ApplicationController
   end
 
   def update
-    @gear = Gear.new(gears_params)
-    @gear.user = current_user
     authorize @gear
 
-    if @gear.save!
+    if @gear.update(gears_params)
       redirect_to owner_gears_path
     else
       render :edit
