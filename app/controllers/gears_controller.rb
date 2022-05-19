@@ -20,7 +20,7 @@ class GearsController < ApplicationController
         lat: gear.latitude,
         lng: gear.longitude,
         info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
-        # image_url: helpers.asset_url("SNOARED-logo")
+         image_url: helpers.asset_url("logo.png")
       }
     end
   end
