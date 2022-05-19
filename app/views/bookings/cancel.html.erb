@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Bookings Cancellation</h1>
+
+    <div class="col-md-6 px-3 d-flex align-self-stretch">
+    <div class="row border rounded mb-4 shadow-sm position-relative d-flex bg-white">
+      <div class="col p-4 d-flex flex-column align-self-center position-static">
+        <h4><%= @booking.gear.title %></h4>
+        <p class="p-2">Duration:
+          <span class="text-white bg-secondary p-1"><%= @booking.start_date %></span>
+            -
+          <span class="text-white bg-secondary p-1"><%= @booking.end_date %></span>
+        </p>
+        <p class="p-2">Status:
+          <span class="text-white bg-secondary p-1"><%= @booking.status %></span>
+        </p>
+      </div>
+
+      <div class="col-auto p-3">
+        <%= image_tag @booking.gear.img_url, width: "200", height: "250" %>
+      </div>
+    </div>
+  </div>
+
+  <%= simple_form_for [@booking.gear, @booking] do |f| %>
+    <p class="text-center">
+      <%= f.submit 'Cancel Booking', class:'btn btn-danger btn-lg text-light mb-3 mt-3 active',data: { confirm: 'Do you really want to cancel?' }%>
+    </p>
+  <% end %>
+</div>
