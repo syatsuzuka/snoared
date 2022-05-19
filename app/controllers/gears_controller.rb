@@ -3,12 +3,23 @@ class GearsController < ApplicationController
   before_action :set_gear, only: %i[show edit update]
 
   def index
+  
      @gears =
       if params[:q].present?
         policy_scope(Gear).search_by_title_and_description_address(params[:q])
       else
         policy_scope(Gear)
       end
+
+     @markers = @gears.geocoded.map do |gear|
+      {
+        lat: gear.latitude,
+        lng: gear.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
+        # image_url: helpers.asset_url("SNOARED-logo")
+
+      }
+    end
   end
 
   def show
