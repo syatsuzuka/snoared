@@ -9,6 +9,12 @@ class GearsController < ApplicationController
       else
         policy_scope(Gear)
       end
+
+      if params[:price].present?
+        @gears = @gears.select do |gear|
+          gear.price < params[:price].to_i
+        end
+      end
   end
 
   def show

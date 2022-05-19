@@ -6,8 +6,10 @@ class Gear < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_title_and_description_address,
-    against: [ :title, :description, :address ],
+    against: [ :title, :description, :address,],
     using: {
       tsearch: { prefix: true }
     }
+
+
 end
