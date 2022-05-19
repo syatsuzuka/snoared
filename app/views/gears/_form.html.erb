@@ -1,0 +1,9 @@
+  <%= simple_form_for @gear do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :img_url %>
+    <%= f.input :address %>
+    <%= f.input :price if @gear.id.nil? %>
+    <%= f.submit 'Save', class: "btn btn-danger text-light" %>
+    <%= link_to 'Cancel', owner_gears_path, class: 'btn btn-danger text-light' %>
+  <% end %>

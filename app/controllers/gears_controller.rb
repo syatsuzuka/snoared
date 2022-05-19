@@ -1,6 +1,6 @@
 class GearsController < ApplicationController
-  before_action :gears_params, only: %w[create]
-  before_action :set_gear, only: %w[show]
+  before_action :gears_params, only: %i[create]
+  before_action :set_gear, only: %i[show edit update]
 
   def index
   
@@ -42,6 +42,22 @@ class GearsController < ApplicationController
       redirect_to gears_path
     else
       render :new
+    end
+  end
+
+  def edit
+    authorize @gear
+  end
+
+  def update
+    @gear = Gear.new(gears_params)
+    @gear.user = current_user
+    authorize @gear
+
+    if @gear.save!
+      redirect_to owner_gears_path
+    else
+      render :edit
     end
   end
 
