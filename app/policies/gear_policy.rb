@@ -33,7 +33,7 @@ class GearPolicy < ApplicationPolicy
     true
   end
 
-  def owned?
+  def owner?
     true
   end
 end

@@ -29,10 +29,9 @@ class GearsController < ApplicationController
     end
   end
 
-  def owned
+  def owner
     @gears = policy_scope(Gear).where(user: current_user)
     authorize @gears
-    render 'owned'
   end
 
   private
