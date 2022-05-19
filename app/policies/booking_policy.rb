@@ -37,7 +37,7 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def all?
+  def admin?
     user.roles.where(name: "admin").any?
   end
 end

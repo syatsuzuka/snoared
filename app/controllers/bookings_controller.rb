@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  def all
+  def admin
     @bookings = policy_scope(Booking)
     authorize @bookings
     @bookings.sort_by { |booking| booking.start_date }.reverse
