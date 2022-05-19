@@ -23,7 +23,7 @@
 
   <%= simple_form_for [@booking.gear, @booking] do |f| %>
     <p class="text-center">
-      <%= f.submit 'Cancel Booking', class:'btn btn-danger btn-lg text-light mb-3 mt-3 active'%>
+      <%= f.submit 'Cancel Booking', class:'btn btn-danger btn-lg text-light mb-3 mt-3 active',data: { confirm: 'Do you really want to cancel?' }%>
     </p>
   <% end %>
 </div>

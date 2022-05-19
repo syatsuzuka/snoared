@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
     @booking.status = "Canceled"
     authorize @booking
 
-    if @booking.valid?
+    if @booking.save!
       redirect_to bookings_path
     else
       render :cancel
