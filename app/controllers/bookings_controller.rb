@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_gear, only: %i[new create cancel edit update review]
-  before_action :set_booking, only: %i[cancel edit update]
+  before_action :set_gear, only: %i[new create cancel edit update review accept reject]
+  before_action :set_booking, only: %i[cancel edit update accept reject]
 
   def index
     @bookings = policy_scope(Booking).sort_by { |booking| booking.start_date }.reverse
@@ -48,6 +48,28 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
     authorize @bookings
     @bookings.sort_by { |booking| booking.start_date }.reverse
+  end
+
+  def accept
+    @booking.status = 'Accepted'
+    authorize @booking
+
+    if @booking.save!
+      redirect_to review_gear_bookings_path(@booking.gear)
+    else
+      render accept_gear_booking_path(@booking.gear, @booking)
+    end
+  end
+
+  def reject
+    @booking.status = 'Rejected'
+    authorize @booking
+
+    if @booking.save!
+      redirect_to review_gear_bookings_path(@booking.gear)
+    else
+      render reject_gear_booking_path(@booking.gear, @booking)
+    end
   end
 
   def cancel

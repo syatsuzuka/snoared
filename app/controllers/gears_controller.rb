@@ -11,6 +11,11 @@ class GearsController < ApplicationController
         policy_scope(Gear)
       end
 
+      if params[:price].present?
+        @gears = @gears.select do |gear|
+          gear.price < params[:price].to_i
+        end
+      end
      @markers = @gears.geocoded.map do |gear|
       {
         lat: gear.latitude,

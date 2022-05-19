@@ -41,6 +41,14 @@ class BookingPolicy < ApplicationPolicy
     user.roles.where(name: "admin").any?
   end
 
+  def accept?
+    true
+  end
+#  and ( booking.start_date > Date.today
+  def reject?
+    true
+  end
+
   def cancel?
     true
   end

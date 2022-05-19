@@ -1,0 +1,32 @@
+.searchbar {
+  border-radius: 20px;
+}
+
+.searchbar:active {
+  border-radius: 20px;
+}
+
+.searchbar:focus {
+  border-color: #F17E7E;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(244, 88, 53, 0.25)
+}
+
+
+.searchbox {
+  color: white;
+  background: #F17E7E;
+  margin-left: 10px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 6px #999;
+  padding: 8px 16px;
+}
+
+.searchbox:hover {background-color: red}
+
+.searchbox:active {
+  background-color: red;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
