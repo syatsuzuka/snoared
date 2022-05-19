@@ -23,10 +23,14 @@ class Booking < ApplicationRecord
 
   def double_booking
     bookings = Booking.where(gear: gear)
-    overlap = bookings.select{ |booking| (start_date - booking.end_date) * (booking.start_date - end_date) > 0  }
+    overlap = bookings.select { |booking| (start_date - booking.end_date) * (booking.start_date - end_date) > 0  }
     unless overlap.blank?
-      errors.add(:start_date, "Double booking: #{gear.title}")
-      errors.add(:end_date, "Double booking: #{gear.title}")
+      overlap.each do |booking|
+        if booking.status != "Canceled" and booking.id != id
+          errors.add(:start_date, "Double booking: #{gear.title}")
+          errors.add(:end_date, "Double booking: #{gear.title}")
+        end
+      end
     end
   end
 end
