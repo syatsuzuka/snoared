@@ -14,7 +14,13 @@
         <td class="col"><%= booking.user.first_name %> <%= booking.user.last_name %></td>
         <td class="col"><%= booking.start_date %></td>
         <td class="col"><%= booking.end_date %></td>
-        <td class="col"><%= booking.status %></td>
+        <td class="col">
+          <% if booking.status == 'Requested' %>
+            <%= link_to booking.status, accept_gear_booking_path(booking.gear, booking), class: 'btn btn-danger text-white',data: { confirm: 'Do you want to accept this?' } %>
+          <% else %>
+            <%= booking.status %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
