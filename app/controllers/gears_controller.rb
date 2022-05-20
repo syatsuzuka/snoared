@@ -15,7 +15,16 @@ class GearsController < ApplicationController
           gear.price < params[:price].to_i
         end
       end
-     @markers = @gears.geocoded.map do |gear|
+      
+      if params[:sort].present?
+        if params[:sort] == "location"
+          @gears = @gears.sort_by { |gear| gear.address.downcase }
+        else
+          @gears = @gears.sort_by { |gear| gear.created_at }
+        end
+      end
+    
+      @markers = @gears.geocoded.map do |gear|
       {
         lat: gear.latitude,
         lng: gear.longitude,
