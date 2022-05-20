@@ -6,9 +6,9 @@
       <div class="col p-4 d-flex flex-column align-self-center position-static">
         <h4><%= @booking.gear.title %></h4>
         <p class="p-2">Duration:
-          <span class="text-white bg-secondary p-1"><%= @booking.start_date %></span>
+          <span class="p-2 bg-info bg-opacity-10 border border-info border-start-0 border-end-0"><%= @booking.start_date %></span>
             -
-          <span class="text-white bg-secondary p-1"><%= @booking.end_date %></span>
+          <span class="p-2 bg-info bg-opacity-10 border border-info border-start-0 border-end-0"><%= @booking.end_date %></span>
         </p>
         <p class="p-2">Status:
           <span class="text-white bg-secondary p-1"><%= @booking.status %></span>
@@ -23,7 +23,7 @@
 
   <%= simple_form_for [@booking.gear, @booking] do |f| %>
     <p class="text-center">
-      <%= f.submit 'Cancel Booking', class:'btn btn-danger btn-lg text-light mb-3 mt-3 active',data: { confirm: 'Do you really want to cancel?' }%>
+      <%= f.submit 'Cancel Booking', class:"cancelbutton",data: { confirm: 'Do you really want to cancel?' }%>
     </p>
   <% end %>
 </div>
