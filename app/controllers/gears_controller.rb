@@ -24,6 +24,24 @@ class GearsController < ApplicationController
         end
       end
 
+      
+      if params[:sort].present?
+        if params[:sort] == "location"
+          @gears = @gears.sort_by { |gear| gear.address.downcase }
+        else
+          @gears = @gears.sort_by { |gear| gear.created_at }
+        end
+      end
+    
+      @markers = @gears.geocoded.map do |gear|
+      {
+        lat: gear.latitude,
+        lng: gear.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
+         image_url: helpers.asset_url("logo.png")
+      }
+    end
+
   end
 
   def show
@@ -54,11 +72,9 @@ class GearsController < ApplicationController
   end
 
   def update
-    @gear = Gear.new(gears_params)
-    @gear.user = current_user
     authorize @gear
 
-    if @gear.save!
+    if @gear.update(gears_params)
       redirect_to owner_gears_path
     else
       render :edit
