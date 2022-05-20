@@ -15,10 +15,14 @@
               </p>
               <div class="container">
                 <div>
-                  <h5>Owner: <%= gear.user.first_name %> <%= gear.user.last_name %>
+                  <h5>Owner:
                   <% if defined? gear.user.account.photo.key %>
-                    <%= cl_image_tag gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                    <%= link_to account_path(gear.user.account), class: "text-decoration-none" do %>
+                      <%= gear.user.first_name %> <%= gear.user.last_name %>
+                      <%= cl_image_tag gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                    <% end %>
                   <% else %>
+                    <%= gear.user.first_name %> <%= gear.user.last_name %>
                     <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
                   <% end %>
                   </h5>
