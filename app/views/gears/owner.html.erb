@@ -1,19 +1,19 @@
 <div class="container">
 
   <h1>My Gears</h1>
-  <%= link_to "Add Gear", new_gear_path, class: "btn btn-danger text-white" %>
+  <%= link_to "Add Gear", new_gear_path, class: "btn btn-danger text-white mb-5" %>
 
-  <div class="container m-5">
+  <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 d-flex">
       <% @gears.each do |gear| %>
         <div class="col">
           <div class="card shadow-sm" style="height: 100%">
             <%= image_tag gear.img_url, class: "p-3" %>
             <div class="card-body">
+              <div class="container">
               <p class="card-text">
                 <h3><%= gear.title %></h3>
               </p>
-              <div class="container">
                 <div>
                   <h5>Owner: <%= gear.user.first_name %> <%= gear.user.last_name %>
                   <% if defined? gear.user.account.photo.key %>
@@ -23,13 +23,16 @@
                   <% end %>
                   </h5>
                 </div>
-
-                <div>
-                  <h5>Location: <strong><%= gear.address.split.first.gsub(",","") %></strong></h5>
-                  <p><%= gear.description.split.first(29).join(" ") + "..." %></p>
+                <p><%= gear.description.split.first(29).join(" ") + "..." %></p>
+                <div class="location-fontawesome d-flex align-items-center">
+                  <i class="fas fa-map-marked-alt fa-2x me-3"></i>
+                  <h5 class="mt-3"><strong><%= gear.address.split.first.gsub(",","") %></strong></h5>
                 </div>
+                  <div class="price-fontawesome d-flex mt-3 mb-4">
+                    <i class="fas fa-money-bill-wave fa-2x me-3"></i>
+                    <h5 class="mt-auto price"><%="¥#{gear.price.to_i} /day" %></h5>
+                  </div>
                 <div>
-                  <h5 class="mt-auto price"><%="¥#{gear.price.to_i} /day" %></h5>
                   <div>
                     <%= link_to "Edit", edit_gear_path(gear), class: "btn btn-danger text-white" %>
                     <%= link_to "Review Booking", review_gear_bookings_path(gear), class: "btn btn-danger text-white" %>
