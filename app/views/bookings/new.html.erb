@@ -6,8 +6,23 @@
       <div class="card-info mt-5">
         <h1><%= @gear.title %></h1>
         <p class="mt-5"><%= @gear.description %></p>
-        <h4 class="blockquote-footer mt-5"><%= @gear.address %></h4>
-        <h2 class="mt-5">￥<%= @gear.price %>/day</h2>
+
+        <div class="d-flex align-items-end flex-column">
+          <h5 class="mt-5">
+            Owner:
+            <% if defined? @gear.user.account.photo.key %>
+              <%= link_to account_path(@gear.user.account), class: "text-decoration-none" do %>
+                <%= @gear.user.first_name %> <%= @gear.user.last_name %>
+                <%= cl_image_tag @gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+              <% end %>
+            <% else %>
+              <%= @gear.user.first_name %> <%= @gear.user.last_name %>
+              <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
+          </h5>
+          <h4 class="blockquote-footer mt-3"><%= @gear.address %></h4>
+          <h2 class="mt-3">￥<%= @gear.price %>/day</h2>
+        </div>
       </div>
     </div>
     <div class="form">

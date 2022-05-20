@@ -1,11 +1,11 @@
 <div class="cards">
-
   <% @gears.each do |gear| %>
     <div class="cards-index d-flex flex-column">
-      <%= link_to "", new_gear_booking_path(gear.id)%>
+      <%= link_to "", new_gear_booking_path(gear.id) %>
       <%= image_tag gear.img_url %>
 
       <h2><%= gear.title %></h2>
+
       <div class="d-flex">
         <h2>Owner: <%= gear.user.first_name %> <%= gear.user.last_name %></h2>
         <% if defined? gear.user.account.photo.key %>

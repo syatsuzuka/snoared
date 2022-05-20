@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Account Info</h1>
+
+  <div class="card p-5">
+    <h4>
+      <%= @account.user.last_name %> <%= @account.user.first_name %> (<%= @account.company %>)
+      <% if defined? @account.photo.key %>
+        <%= cl_image_tag @account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <% else %>
+        <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <% end %>
+    </h4>
+    <div class="p-3"><%= @account.summary %></div>
+    <h5>Contact Info:</h4>
+    <ul>
+      <li>address: <%= @account.address %></li>
+      <li>phone: <%= @account.phone %></li>
+      <li>email: <%= @account.email %></li>
+    </ul>
+    <h4></h4>
+  </div>
+</div>
