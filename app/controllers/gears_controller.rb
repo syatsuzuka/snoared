@@ -9,12 +9,21 @@ class GearsController < ApplicationController
       else
         policy_scope(Gear)
       end
+      @markers = @gears.geocoded.map do |gear|
+        {
+          lat: gear.latitude,
+          lng: gear.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
+           image_url: helpers.asset_url("logo.png")
+        }
+      end
 
       if params[:price].present?
         @gears = @gears.select do |gear|
           gear.price < params[:price].to_i
         end
       end
+
       
       if params[:sort].present?
         if params[:sort] == "location"
@@ -32,6 +41,7 @@ class GearsController < ApplicationController
          image_url: helpers.asset_url("logo.png")
       }
     end
+
   end
 
   def show
