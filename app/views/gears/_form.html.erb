@@ -6,6 +6,6 @@
         input_html: { data: { geocoder_target: "address" }, class: "d-none" },
         wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }  %>
     <%= f.input :price if @gear.id.nil? %>
-    <%= f.submit 'Save', class: "btn btn-danger text-light" %>
-    <%= link_to 'Cancel', owner_gears_path, class: 'btn btn-danger text-light' %>
+    <%= f.submit 'Save', class: "btn btn-danger text-light mt-3 fs-5" %>
+    <%= link_to 'Cancel', owner_gears_path, class: 'btn btn-danger text-light fs-5 mt-3'%>
   <% end %>
