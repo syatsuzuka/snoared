@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @gear.user = current_user
+    @booking.user = current_user
     @booking.gear = @gear
     authorize @booking
   end

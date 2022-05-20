@@ -6,11 +6,15 @@
       <div class="card-info mt-5">
         <h1><%= @gear.title %></h1>
         <div class="d-flex align-items-center my-5">
-          <h2>Owner: <%= @gear.user.first_name %> <%= @gear.user.last_name %></h2>
+
+          <h2>Owner:
+          <%= link_to account_path(@gear.user) do %>
+          <%= @gear.user.first_name %> <%= @gear.user.last_name %></h2>
           <% if defined? @gear.user.account.photo.key %>
             <%= cl_image_tag @gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
           <% else %>
             <%= image_tag 'avatar.png', class: "avatar dropdown-toggle ms-3 mb-3", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+          <% end %>
           <% end %>
         </div>
         <p class="mt-3"><%= @gear.description %></p>
