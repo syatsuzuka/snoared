@@ -1,5 +1,6 @@
 class Gear < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
   has_many :bookings
   has_many :users, through: :bookings
   validates :title, :description, :price, :address, presence: true
@@ -10,7 +11,7 @@ class Gear < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-   
+
   geocoded_by :address
   after_validation :geocode, if:
   :will_save_change_to_address?

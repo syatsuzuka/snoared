@@ -3,7 +3,6 @@ class GearsController < ApplicationController
   before_action :set_gear, only: %i[show edit update]
 
   def index
-  
      @gears =
       if params[:q].present?
         policy_scope(Gear).search_by_title_and_description_address(params[:q])
@@ -11,13 +10,17 @@ class GearsController < ApplicationController
         policy_scope(Gear)
       end
 
+      if params[:price].present?
+        @gears = @gears.select do |gear|
+          gear.price < params[:price].to_i
+        end
+      end
      @markers = @gears.geocoded.map do |gear|
       {
         lat: gear.latitude,
         lng: gear.longitude,
         info_window: render_to_string(partial: "info_window", locals: { gear: gear }),
-        # image_url: helpers.asset_url("SNOARED-logo")
-
+         image_url: helpers.asset_url("logo.png")
       }
     end
   end
@@ -50,15 +53,19 @@ class GearsController < ApplicationController
   end
 
   def update
-    @gear = Gear.new(gears_params)
-    @gear.user = current_user
     authorize @gear
 
-    if @gear.save!
+    if @gear.update(gears_params)
       redirect_to owner_gears_path
     else
       render :edit
     end
+  end
+
+  def admin
+    @gears = policy_scope(Gear)
+    authorize @gears
+    render 'owner'
   end
 
   def owner

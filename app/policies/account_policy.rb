@@ -1,4 +1,4 @@
-class GearPolicy < ApplicationPolicy
+class AccountPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -33,11 +33,11 @@ class GearPolicy < ApplicationPolicy
     true
   end
 
-  def admin?
+  def setting?
     true
   end
 
-  def owner?
+  def upsert?
     true
   end
 end

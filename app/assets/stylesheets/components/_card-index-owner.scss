@@ -1,4 +1,4 @@
-.cards-index {
+.cards-index-owner {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -6,9 +6,8 @@
   max-width: 360px;
   text-decoration:none;
   color:black;
-  position:relative;
 }
-.cards-index:hover{
+.cards-index-owner:hover{
   transform: scale(1.02);
 box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 opacity: 0.8;
@@ -16,32 +15,32 @@ text-decoration:none;
 color:black;
 }
 
-.cards-index > img {
+.cards-index-owner > a img{
   height: 200px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 16px;
 }
 
-.cards-index h2 {
+.cards-index-owner h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
   padding-bottom: 16px;
 }
 
-.cards-index p {
+.cards-index-owner p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
   padding-bottom:16px;
 }
-.cards-index .price{
+.cards-index-owner .price{
 
 }
 
 
-.cards-index .cards-index-infos {
+.cards-index-owner .cards-index-owner-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -49,27 +48,19 @@ color:black;
   position: relative;
 }
 
-.cards-index-infos .cards-index-user {
-
+.cards-index-owner-infos .cards-index-owner-user {
+  position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
 }
-.cards-index a{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  }
-
 
 
 // ↓↓↓↓↓↓↓ card layout ↓↓↓↓↓↓↓
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 
 }
@@ -98,13 +89,13 @@ color:black;
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1ft;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
