@@ -1,7 +1,9 @@
   <%= simple_form_for @account do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :company %>
     <%= f.input :address %>
+    <%= f.input :phone %>
+    <%= f.input :email %>
+    <%= f.input :summary %>
     <%= f.input :photo, as: :file %>
     <%= f.submit 'Save', class: "btn btn-danger text-light" %>
     <%= link_to 'Cancel', gears_path, class: 'btn btn-danger text-light' %>

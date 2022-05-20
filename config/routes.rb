@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/gears/:gear_id/bookings/:id/accept', to: 'bookings#accept', as: :accept_gear_booking
   get '/gears/:gear_id/bookings/:id/reject', to: 'bookings#reject', as: :reject_gear_booking
 
-  resources :accounts, only: %i[new create edit update]
+  resources :accounts, only: %i[new show create edit update]
   resources :gears, only: %i[show index new create edit update] do
     resources :bookings, only: %i[new create update]
   end

@@ -1,5 +1,5 @@
 <div class="container-fluid col-11">
-  <%= form_tag gears_path, method: :get, class: 'd-flex align-items-center my-5' do %>
+  <%= form_tag gears_path, method: :get, class: 'd-flex align-items-center my-3' do %>
     <%= text_field_tag :q,
       params[:q],
       class: "form-control searchbar",
@@ -13,14 +13,14 @@
     %>
     <%= submit_tag "Search", class: "searchbox" %>
   <% end %>
-<div class="container-fluid d-flex flex-row">
+<div class="container-fluid d-flex flex-row mb-3">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Sort by
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="/gears?sort=location">Location</a></li>
-    <li><a class="dropdown-item" href="/gears?sort=created_at">Date</a></li>
+    <li><a class="dropdown-item" href="/gears?sort=created_at">New listings</a></li>
   </ul>
 </div>
 </div>
