@@ -11,19 +11,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if user_signed_in? %>
         <nav class="my-2 my-md-0 mr-md-3">
-
         <%if Booking.where(user_id: current_user.id).any? {|booking| booking.status == "Requested"} %>
         <span class="badge bg-warning text-dark">Waiting for owner</span>
         <% end %>
-          <%= link_to "Home", gears_path, class: "p-2 text-dark" %>
+          <i class="fas fa-home"></i>
+          <%= link_to "Home", gears_path, class: "p-2 text-dark me-2" %>
           <% if current_user.roles.where(name: "admin").any? %>
             <%= link_to "All Booking", admin_bookings_path, class: "p-2 text-dark" %>
+            <i class="fas fa-snowboarding"></i>
             <%= link_to "All Gear", admin_gears_path, class: "p-2 text-dark" %>
           <% else %>
-            <%= link_to "My Booking", bookings_path, class: "p-2 text-dark" %>
+            <i class="fas fa-edit"></i>
+            <%= link_to "My Booking", bookings_path, class: "p-2 text-dark me-2" %>
           <% end %>
           <% if current_user.roles.where(name: "owner").any? %>
-            <%= link_to "My Gear", owner_gears_path, class: "p-2 text-dark" %>
+            <i class="fas fa-snowboarding"></i>
+            <%= link_to "My Gear", owner_gears_path, class: "p-2 text-dark me-2" %>
           <% end %>
         </nav>
 
