@@ -3,7 +3,43 @@
   <h1>My Gears</h1>
   <%= link_to "Add Gear", new_gear_path, class: "btn btn-danger text-white" %>
 
-  <div class="container-fluid col-10">
-    <%= render 'shared/card-index-owner' %>
+  <div class="container m-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 d-flex">
+      <% @gears.each do |gear| %>
+        <div class="col">
+          <div class="card shadow-sm" style="height: 100%">
+            <%= image_tag gear.img_url, class: "p-3" %>
+            <div class="card-body">
+              <p class="card-text">
+                <h3><%= gear.title %></h3>
+              </p>
+              <div class="container">
+                <div>
+                  <h5>Owner: <%= gear.user.first_name %> <%= gear.user.last_name %>
+                  <% if defined? gear.user.account.photo.key %>
+                    <%= cl_image_tag gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+                  <% end %>
+                  </h5>
+                </div>
+
+                <div>
+                  <h5>Location: <strong><%= gear.address.split.first.gsub(",","") %></strong></h5>
+                  <p><%= gear.description.split.first(29).join(" ") + "..." %></p>
+                </div>
+                <div>
+                  <h5 class="mt-auto price"><%="¥#{gear.price.to_i} /day" %></h5>
+                  <div>
+                    <%= link_to "Edit", edit_gear_path(gear), class: "btn btn-danger text-white" %>
+                    <%= link_to "Review Booking", review_gear_bookings_path(gear), class: "btn btn-danger text-white" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
