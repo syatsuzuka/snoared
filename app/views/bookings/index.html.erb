@@ -13,10 +13,15 @@
                   <span class="p-2 bg-info bg-opacity-10 border border-info border-start-0 border-end-0"><%= booking.end_date %></span>
                 </p>
                 <p class="p-2">Status:
-                  <span class="text-white bg-secondary p-1"><%= booking.status %></span>
-                  <% if ["Requested", "Accepted"].include? (booking.status) and booking.start_date > Date.today %>
-                    <%= link_to "Cancel", cancel_gear_booking_path(booking.gear, booking), class: "cancelbutton" %>
+                  <% if booking.status == "Accepted" %><span class="p-2 bg-success bg-opacity-10 border border-success border-start-0 border-end-0"><%= booking.status %></span>
+                    <%elsif booking.status == "Requested" %><span class="p-2 bg-primary bg-opacity-10 border border-primary border-start-0 border-end-0"><%= booking.status %></span>
+                    <% else %>
+                      <span class="p-2 bg-danger bg-opacity-10 border border-danger border-start-0 border-end-0"><%= booking.status %></span>
                   <% end %>
+                    <% if ["Requested", "Accepted"].include? (booking.status) and booking.start_date > Date.today %>
+                      <%= link_to "Cancel", cancel_gear_booking_path(booking.gear, booking), class: "cancelbutton" %>
+                    <% end %>
+
                 </p>
 
             </div>
