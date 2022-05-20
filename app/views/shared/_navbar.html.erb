@@ -11,6 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if user_signed_in? %>
         <nav class="my-2 my-md-0 mr-md-3">
+
+        <%if Booking.where(user_id: current_user.id).any? {|booking| booking.status == "Requested"} %>
+        <span class="badge bg-warning text-dark">Waiting for owner</span>
+        <% end %>
           <%= link_to "Home", gears_path, class: "p-2 text-dark" %>
           <% if current_user.roles.where(name: "admin").any? %>
             <%= link_to "All Booking", admin_bookings_path, class: "p-2 text-dark" %>
