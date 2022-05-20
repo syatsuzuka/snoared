@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Account Info</h1>
+  <h1>Contact Owner</h1>
 
   <div class="card p-5">
     <h4>
@@ -17,6 +17,36 @@
       <li>phone: <%= @account.phone %></li>
       <li>email: <%= @account.email %></li>
     </ul>
-    <h4></h4>
+
+    <div class="m-3">
+      <%= simple_form_for @account do |f| %>
+        <%= f.input :first_name, label: false %>
+        <%= f.submit 'Send', class: "btn btn-danger text-light" %>
+      <% end %>
+
+      <div class="m-3 bg-light p-3 rounded">
+        <div class="d-flex align-items-start flex-column">
+          <p>From: Customer, DD/MM, YYYY hh:mm:ss</p>
+          <p class="bg-secondary rounded p-3 text-white text-left">
+            xxxxxxxxxxxxxxxxxxx
+          </p>
+        </div>
+
+        <div class="d-flex align-items-end flex-column">
+          <p>From: Owner, DD/MM, YYYY hh:mm:ss</p>
+          <p class="bg-secondary rounded p-3 text-white">
+            xxxxxxxxxxxxxxxxxxx
+          </p>
+        </div>
+
+        <div class="d-flex align-items-start flex-column">
+          <p>From: Customer, DD/MM, YYYY hh:mm:ss</p>
+          <p class="bg-secondary rounded p-3 text-white text-left">
+            xxxxxxxxxxxxxxxxxxx
+          </p>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
