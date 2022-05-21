@@ -8,7 +8,7 @@
         <div class="d-flex align-items-center my-5">
 
           <h2>Owner:
-          <%= link_to account_path(@gear.user) do %>
+          <%= link_to account_path(@gear.user.account) do %>
           <%= @gear.user.first_name %> <%= @gear.user.last_name %></h2>
           <% if defined? @gear.user.account.photo.key %>
             <%= cl_image_tag @gear.user.account.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
